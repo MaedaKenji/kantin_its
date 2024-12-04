@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kantin_its/core/configs/theme/app_theme.dart';
 import 'package:kantin_its/core/configs/theme/app_color.dart';
+import 'map_page.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +18,9 @@ class MyApp extends StatelessWidget {
       title: 'Kantin ITS',
       theme: AppTheme.getAppTheme(),
       home: const KantinPage(),
+      routes: {
+        '/mappage': (context) => const Mappage(),
+      },
     );
   }
 }
@@ -28,14 +33,28 @@ class KantinPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: AppTheme.getGradientBackground(),
-        child: const Column(
+        child: Column(
           children: [
             Logo(),
             KantinText(),
             SearchBar(),
             SizedBox(height: 20),
             ScrollableButtonSection(),
-            KantinCard(title: "Kantin 1", description: "description")
+            KantinCard(title: "Kantin 1", description: "description"),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/mappage');
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF4872B1),
+                padding: const EdgeInsets.symmetric(vertical: 15),
+              ),
+              child: const Text(
+                "Lihat Lokasi Kantin",
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
+            ),
+
           ],
         ),
       ),

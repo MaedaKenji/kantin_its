@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'core/configs/theme/app_theme.dart';
 import 'presentations/splash/pages/splash.dart';
+import 'presentations/splash/pages/map_page.dart';
+
 
 
 void main() {
@@ -12,10 +14,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Kantin ITS',
       debugShowCheckedModeBanner: false,
       home:  KantinPage(),
+      routes: {
+        '/mappage': (context) => Mappage(), // Tambahkan ini
+      },
+      
     );
   }
 }
